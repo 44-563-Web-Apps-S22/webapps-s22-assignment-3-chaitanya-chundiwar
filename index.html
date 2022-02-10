@@ -35,7 +35,80 @@ I join my friends in playing treasure hunt in the sand, which is based on hiding
     <li>Mutton shawarma</li>
     <li>Prawns pakodi</li>
 </ul>
-<a href="aboutme.html"></a>
+<a href="aboutme.html">aboutme</a>
 <hr>
+<h1>Sports</h1>
+<p>
+following table shows the sports that I would recommend someone try.which helps to improve mentally and physically
+</p>
+<table>
+    <tr>
+      <th>Name</th>
+      <th>location</th>
+      <th>amount</th>
+    </tr>
+    <tr>
+      <td>basket Ball </td>
+      <td>hyderbad  </td>
+      <td>$80</td>
+    </tr>
+    <tr>
+      <td>base Ball </td>
+      <td>ongole</td>
+      <td> $290 </td>
+    </tr>
+    <tr>
+        <td>cricket </td>
+        <td>Anakap[alli</td>
+        <td> $85 </td>
+    </tr>
+    <tr>
+        <td> football </td>
+        <td>guntur</td>
+        <td> $90 </td>
+    </tr>
+  </table>
+  <hr>
+  <blockquotes>
+    <h1>code fencing</h1>
+    <p>
+        What is String-Hashing? String hashing is the way to <br>
+        convert a string into an integer known as a hash of that string.An ideal hashing is the one in which there are minimum chances of collision <br>
+        (i.e 2 different strings having the same hash).
+
+    </p>
+    <a href="<https://www.geeksforgeeks.org/string-hashing-using-polynomial-rolling-hash-function/#:~:text=What%20is%20String%2DHashing%3F,strings%20having%20the%20same%20hash).>">More Info</a>
+  </blockquotes>
+  <pre>
+    int count_unique_substrings(string const& s) {
+        int n = s.size();
+    
+        const int p = 31;
+        const int m = 1e9 + 9;
+        vector<long long> p_pow(n);
+        p_pow[0] = 1;
+        for (int i = 1; i < n; i++)
+            p_pow[i] = (p_pow[i-1] * p) % m;
+    
+        vector<long long> h(n + 1, 0);
+        for (int i = 0; i < n; i++)
+            h[i+1] = (h[i] + (s[i] - 'a' + 1) * p_pow[i]) % m;
+    
+        int cnt = 0;
+        for (int l = 1; l <= n; l++) {
+            set<long long> hs;
+            for (int i = 0; i <= n - l; i++) {
+                long long cur_h = (h[i + l] + m - h[i]) % m;
+                cur_h = (cur_h * p_pow[n-i-1]) % m;
+                hs.insert(cur_h);
+            }
+            cnt += hs.size();
+        }
+        return cnt;
+    }
+  </pre>
+  <blockquotes>
+    <a href="<https://cp-algorithms.com/string/string-hashing.html>">Much more to know </a>
+  </blockquotes>
 </body>
 </html>
